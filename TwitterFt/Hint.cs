@@ -23,20 +23,14 @@ namespace TwitterFt
                 }
                 catch (System.Net.WebException ex)
                 {
-                    //HTTPプロトコルエラーかどうか調べる
                     if (ex.Status == System.Net.WebExceptionStatus.ProtocolError)
                     {
-                        //HttpWebResponseを取得
-                        System.Net.HttpWebResponse errres =
-                            (System.Net.HttpWebResponse)ex.Response;
-                        //応答ステータスコードを表示する
+                        System.Net.HttpWebResponse errres = (System.Net.HttpWebResponse)ex.Response;
                         textBox1.Text = $"{errres.StatusCode} : {errres.StatusDescription}";
-                        
                     }
                     else
                         textBox1.Text = ex.Message;
                 }
-
             }
         }
 
